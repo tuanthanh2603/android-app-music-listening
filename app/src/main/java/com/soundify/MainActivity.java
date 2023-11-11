@@ -13,6 +13,10 @@ public class MainActivity extends AppCompatActivity {
         // tuanthanh
         // test
         // test 2
+<<<<<<< HEAD
         // test aaa
+=======
+        // test 3
+>>>>>>> 9067426e223766ba0bc321afa2ab0492aa530743
     }
 }
