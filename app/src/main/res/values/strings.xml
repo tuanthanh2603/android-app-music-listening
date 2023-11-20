@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Soundify</string>
+    <string name="action_library">Thư viện</string>
+    <string name="action_discorver">Khám phá</string>
+    <string name="action_soundify">Soundify</string>
+    <string name="action_radio">Radio</string>
+    <string name="action_user">Cá nhân</string>
+
 </resources>

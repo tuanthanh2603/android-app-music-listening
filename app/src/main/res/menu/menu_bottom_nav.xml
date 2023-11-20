@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_library"
+        android:title="@string/action_library"
+        android:icon="@drawable/music_library_icon" />
+    <item
+        android:id="@+id/actiton_discorver"
+        android:title="@string/action_discorver"
+        android:icon="@drawable/discover_icon" />
+    <item
+        android:id="@+id/action_rating"
+        android:title="@string/action_soundify"
+        android:icon="@drawable/rating_icon" />
+    <item
+        android:id="@+id/action_radio"
+        android:title="@string/action_radio"
+        android:icon="@drawable/radio_icon" />
+    <item
+        android:id="@+id/action_user"
+        android:title="@string/action_user"
+        android:icon="@drawable/user_icon" />
+</menu>
