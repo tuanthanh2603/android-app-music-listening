@@ -7,10 +7,6 @@
     tools:context=".Fragment.LibraryFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Thư viện" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +15,8 @@
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -53,6 +50,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
                             android:text="Bài hát yêu thích" />
 
                         <TextView
@@ -93,6 +91,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
                             android:text="Đã tải" />
 
                         <TextView
@@ -132,6 +131,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
                             android:text="Nghệ sĩ" />
 
                         <TextView
@@ -171,6 +171,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
                             android:text="MV" />
 
                         <TextView
@@ -185,6 +186,15 @@
 
             </LinearLayout>
         </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="Nghe gần đây >" />
     </LinearLayout>
 
 </FrameLayout>
