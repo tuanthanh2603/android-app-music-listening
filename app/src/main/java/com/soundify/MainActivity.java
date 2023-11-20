@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     FrameLayout frameLayout;
     Toolbar toolbar;
 //Hoang Huy
+    //Committ
     //Tuanthanh
     @Override
     protected void onCreate(Bundle savedInstanceState) {
