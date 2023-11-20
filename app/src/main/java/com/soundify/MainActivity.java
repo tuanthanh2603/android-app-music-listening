@@ -2,6 +2,7 @@ package com.soundify;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -21,6 +22,7 @@ import com.soundify.Fragment.UserFragment;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     FrameLayout frameLayout;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         frameLayout = findViewById(R.id.frameFragment);
+        toolbar = findViewById(R.id.toolbar);
     }
     private void addEvent(){
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -43,18 +46,23 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if(id == R.id.action_library){
                     loadFragment(new LibraryFragment());
+                    toolbar.setTitle("Thư viện");
                     return true;
                 } else if(id == R.id.actiton_discorver){
                     loadFragment(new DiscoverFragment());
+                    toolbar.setTitle("Khám phá");
                     return true;
                 } else if (id == R.id.action_rating) {
                     loadFragment(new SoundifyFragment());
+                    toolbar.setTitle("Soundify");
                     return true;
                 } else if (id == R.id.action_radio) {
                     loadFragment(new RadioFragment());
+                    toolbar.setTitle("Radio");
                     return true;
                 } else if (id == R.id.action_user) {
                     loadFragment(new UserFragment());
+                    toolbar.setTitle("Cá nhân");
                     return true;
                 }
                 return false;
