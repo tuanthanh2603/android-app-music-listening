@@ -7,8 +7,25 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.soundify.Artist;
+import com.soundify.CustomAdapterArtist;
 import com.soundify.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +33,10 @@ import com.soundify.R;
  * create an instance of this fragment.
  */
 public class SoundifyFragment extends Fragment {
+    TextView tvArtist;
+    ListView lvArtist;
+    ArrayList<Artist> lsArtist = new ArrayList<>();
+    String url = "https://soundiiz.com/data/fileExamples/artistsExport.json";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +76,51 @@ public class SoundifyFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println(response);
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject artistJson = jsonArray.getJSONObject(i);
+                        String name = artistJson.getString("name");
+                        String fanNumber = artistJson.getString("fans");
+                        String linkPic = artistJson.getString("picture");
+                        Artist artist = new Artist(name, fanNumber, linkPic);
+                        lsArtist.add(artist);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                tvArtist.setText("ARTIST: " + lsArtist.size());
+                CustomAdapterArtist adapter = new CustomAdapterArtist(requireContext(), R.layout.layout_items_artist, lsArtist);
+                lvArtist.setAdapter(adapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getApplicationContext(), "Co loi", Toast.LENGTH_LONG).show();
+            }
+        });
+        requestQueue.add(request);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_soundify, container, false);
+        View view = inflater.inflate(R.layout.fragment_soundify, container, false);
+
+        tvArtist = view.findViewById(R.id.tvArtist);
+        lvArtist = view.findViewById(R.id.lvArtist);
+
+        // Initialize your request queue
+
+
+        // Rest of your code...
+
+        return view;
     }
 }
