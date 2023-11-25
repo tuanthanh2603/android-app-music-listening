@@ -2,39 +2,38 @@ package com.soundify;
 
 public class Artist {
 
-    public Artist(String name, String numOfFans, String picLink) {
-    this.name = name;
-    this.numOfFans = numOfFans;
-    this.picLink = picLink;
+    public Artist(String title, String artist, String picture) {
+    this.title = title;
+    this.artist = artist;
+    this.picture = picture;
 }
 
     public Artist(){
 
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getNumOfFans() {
-        return numOfFans;
+    public String getArtist() {
+        return artist;
     }
 
-    public void setNumOfFans(String numOfFans) {
-        this.numOfFans = numOfFans;
+    public void setArtist(String artist) {this.artist = artist;
     }
 
-    public String getPicLink() {
-        return picLink;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setPicLink(String picLink) {
-        this.picLink = picLink;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
-    String name, numOfFans, picLink;
+    String title, artist, picture;
 }

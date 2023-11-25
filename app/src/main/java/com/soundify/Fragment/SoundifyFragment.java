@@ -33,10 +33,10 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class SoundifyFragment extends Fragment {
-    TextView tvArtist;
+
     ListView lvArtist;
     ArrayList<Artist> lsArtist = new ArrayList<>();
-    String url = "https://soundiiz.com/data/fileExamples/artistsExport.json";
+    String url = "https://soundiiz.com/data/fileExamples/playlistExport.json";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,11 +86,11 @@ public class SoundifyFragment extends Fragment {
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject artistJson = jsonArray.getJSONObject(i);
-                        String name = artistJson.getString("name");
-                        String fanNumber = artistJson.getString("fans");
-                        String linkPic = artistJson.getString("picture");
-                        Artist artist = new Artist(name, fanNumber, linkPic);
-                        lsArtist.add(artist);
+                        String title = artistJson.getString("title");
+                        String artist = artistJson.getString("artist");
+                        String picture = artistJson.getString("picture");
+                        Artist Album = new Artist( title,  artist,  picture);
+                        lsArtist.add(Album);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

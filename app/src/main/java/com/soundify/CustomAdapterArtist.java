@@ -34,13 +34,14 @@ public class CustomAdapterArtist extends ArrayAdapter {
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(layoutItem,null);
         }
-        TextView tvNameArtist = (TextView) convertView.findViewById(R.id.txtNameAritis);
-        ImageView imgArtist = (ImageView) convertView.findViewById(R.id.imgArtist);
-        TextView tvNumFan = (TextView) convertView.findViewById(R.id.txtNufans);
+        TextView tvNameTitle = (TextView) convertView.findViewById(R.id.tvNameTitle);
+        TextView tvNameArtist = (TextView) convertView.findViewById(R.id.tvNameArtist);
+        ImageView imgAlbum = (ImageView) convertView.findViewById(R.id.imgAlbum);
 
-        Picasso.with(context).load(artist.getPicLink()).resize(100, 100).into(imgArtist);
-        tvNameArtist.setText(artist.getName());
-        tvNumFan.setText(String.valueOf(artist.getNumOfFans()));
+
+        tvNameTitle.setText(artist.getTitle());
+        tvNameArtist.setText(artist.getArtist());
+        Picasso.with(context).load(artist.getPicture()).resize(100, 100).into(imgAlbum);
 
         return  convertView;
     }

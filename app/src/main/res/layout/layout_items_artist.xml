@@ -12,7 +12,7 @@
 
 
         <ImageView
-            android:id="@+id/imgArtist"
+            android:id="@+id/imgAlbum"
             android:layout_width="116dp"
             android:layout_height="93dp"
             tools:srcCompat="@tools:sample/avatars" />
@@ -23,12 +23,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtNameAritis"
+                android:id="@+id/tvNameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="48dp" />
 
             <TextView
-                android:id="@+id/txtNufans"
+                android:id="@+id/tvNameArtist"
                 android:layout_width="match_parent"
                 android:layout_height="46dp" />
         </LinearLayout>
