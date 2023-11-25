@@ -6,26 +6,18 @@
     tools:context=".Fragment.SoundifyFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="soundify" />
+
+
 
     <LinearLayout
+        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="557dp"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvArtist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
         <ListView
             android:id="@+id/lvArtist"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="635dp" />
     </LinearLayout>
 
 </FrameLayout>

@@ -95,7 +95,7 @@ public class SoundifyFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                tvArtist.setText("ARTIST: " + lsArtist.size());
+
                 CustomAdapterArtist adapter = new CustomAdapterArtist(requireContext(), R.layout.layout_items_artist, lsArtist);
                 lvArtist.setAdapter(adapter);
             }
@@ -113,7 +113,7 @@ public class SoundifyFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_soundify, container, false);
 
-        tvArtist = view.findViewById(R.id.tvArtist);
+
         lvArtist = view.findViewById(R.id.lvArtist);
 
         // Initialize your request queue
