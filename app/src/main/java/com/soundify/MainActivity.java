@@ -35,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new LibraryFragment());
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+    private void connected(){
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
     private void addControl(){
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
