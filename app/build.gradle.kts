@@ -38,5 +38,10 @@ dependencies {
     implementation("com.android.volley:volley-cronet:1.2.1")
     implementation("com.squareup.picasso:picasso:2.5.2")
 
-    implementation("com.google.code.gson:gson:2.8.6")
+    implementation("com.android.volley:volley:1.2.1")
+
+////    implementation("com.google.code.gson:gson:2.8.6")
+//    implementation ("com.spotify.android:auth:1.2.3")
+//    implementation ("com.spotify.android:spotify-auth:1.2.0")
+
 }
