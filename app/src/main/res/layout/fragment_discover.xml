@@ -7,6 +7,21 @@
     tools:context=".Fragment.DiscoverFragment">
 
 
-
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/LinerLayoutDiscover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <fragment
+                android:name="com.soundify.Component.BannerDiscover"
+                android:id="@+id/fragmentBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

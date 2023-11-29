@@ -47,6 +47,10 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.8.1")
 
+    implementation("me.relex:circleindicator:2.1.6")
+
+
+
     implementation("com.google.code.gson:gson:2.8.6")
 //    implementation ("com.spotify.android:auth:1.2.3")
 //    implementation ("com.spotify.android:spotify-auth:1.2.0")
