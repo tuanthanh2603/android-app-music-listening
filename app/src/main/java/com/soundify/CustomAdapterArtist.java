@@ -41,7 +41,7 @@ public class CustomAdapterArtist extends ArrayAdapter {
 
         tvNameTitle.setText(artist.getTitle());
         tvNameArtist.setText(artist.getArtist());
-        Picasso.with(context).load(artist.getPicture()).resize(100, 100).into(imgAlbum);
+        Picasso.get().load(artist.getPicture()).resize(100, 100).into(imgAlbum);
 
         return  convertView;
     }

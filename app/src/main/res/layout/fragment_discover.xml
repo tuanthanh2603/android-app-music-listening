@@ -7,21 +7,41 @@
     tools:context=".Fragment.DiscoverFragment">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fillViewport="true">
+
         <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/LinerLayoutDiscover"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <fragment
-                android:name="com.soundify.Component.BannerDiscover"
-                android:id="@+id/fragmentBanner"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="60dp">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="Thể loại"
+                android:textSize="20dp"
+
+                android:textStyle="bold"/>
+
+<!--            <GridView-->
+<!--                android:id="@+id/gridViewTheLoai"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:numColumns="2"-->
+<!--                android:verticalSpacing="8dp"-->
+<!--                android:horizontalSpacing="8dp"-->
+<!--                />-->
+<!--            <ListView-->
+<!--                android:id="@+id/listviewChuDe"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" >-->
+
+<!--            </ListView>-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
-    </ScrollView>
+
 </FrameLayout>

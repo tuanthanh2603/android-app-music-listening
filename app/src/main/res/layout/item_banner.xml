@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imageBackgroundViewBanner"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        />-->
+    <RelativeLayout
+        android:id="@+id/relativeLayoutBanner"
+        android:layout_alignBottom="@+id/imageBackgroundViewBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:padding="2dp"
+            android:id="@+id/imageViewBanner"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:textColor="@color/teal_200"
+            android:textStyle="bold"
+            android:text="Lo yeu mat roi"
+            android:textSize="17sp"
+            android:id="@+id/textViewTitleBannerBaiHat"
+            android:layout_marginTop="5dp"
+            android:layout_alignTop="@+id/imageViewBanner"
+            android:layout_toRightOf="@+id/imageViewBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewTitleBannerBaiHat"
+            android:layout_toRightOf="@+id/imageViewBanner"
+            android:gravity="left"
+            android:layout_marginTop="7dp">
+            <TextView
+                android:id="@+id/textViewNoiDung"
+                android:textColor="#fffdfc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginRight="40dp"
+                android:maxLines="2"
+                android:text="Nội dung quảng cáo "/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
