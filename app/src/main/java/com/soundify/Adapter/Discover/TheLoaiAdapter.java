@@ -2,15 +2,18 @@ package com.soundify.Adapter.Discover;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.soundify.Activity.Discover.TheLoaiActivity;
 import com.soundify.Model.Discover.TheLoai;
 import com.soundify.R;
 import com.squareup.picasso.Picasso;
@@ -41,6 +44,18 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
 //        holder.idChuDe.setText("CD: " + theLoai.getIdChuDe());
         holder.tenTheLoai.setText(theLoai.getTenTheLoai());
         Picasso.get().load(theLoai.getHinhTheLoai()).into(holder.hinhTheLoai);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String clickedItemId = theLoai.getIdTheLoai();
+                Toast.makeText(context, "ID Thể loại: " + clickedItemId, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, TheLoaiActivity.class);
+                intent.putExtra("ID_THELOAI", clickedItemId);
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 

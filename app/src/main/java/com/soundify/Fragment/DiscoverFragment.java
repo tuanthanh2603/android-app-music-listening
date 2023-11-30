@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +40,16 @@ import java.util.ArrayList;
 public class DiscoverFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ViewPager viewPager;
-    private ArrayList<TheLoai> listTheLoai = new ArrayList<>();
 
+    private ArrayList<TheLoai> listTheLoai = new ArrayList<>();
+    private ViewPager viewPager;
     private ArrayList<DangChuY> listDangChuY = new ArrayList<>();
+    private Handler handler;
+    private Runnable runnable;
+    private final long DELAY_TIME = 4500;
+    private final long PERIOD_TIME = 4500;
+    private  DangChuYAdapter dangChuYAdapter1;
+
 
 
     private String url_theloai = "https://musicapp29263.000webhostapp.com/Server/gettheloai.php";
@@ -88,8 +96,6 @@ public class DiscoverFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
         RequestQueue requestQueueTheLoai = Volley.newRequestQueue(requireContext());
         StringRequest requestTheLoai = new StringRequest(Request.Method.GET, url_theloai, new Response.Listener<String>() {
             @Override
@@ -140,7 +146,7 @@ public class DiscoverFragment extends Fragment {
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
-                DangChuYAdapter dangChuYAdapter1 = new DangChuYAdapter(requireContext(), listDangChuY);
+                dangChuYAdapter1 = new DangChuYAdapter(requireContext(), listDangChuY);
                 viewPager.setAdapter(dangChuYAdapter1);
             }
         }, new Response.ErrorListener() {
@@ -159,15 +165,38 @@ public class DiscoverFragment extends Fragment {
 //        gridView = view.findViewById(R.id.gridViewTheLoai);
         recyclerView = view.findViewById(R.id.recyclerView);
         viewPager = view.findViewById(R.id.viewPager);
+        handler = new Handler(Looper.getMainLooper());
+
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                int next = viewPager.getCurrentItem() + 1;
+                if(next >= dangChuYAdapter1.getCount()){
+                    next = 0;
+                }
+                viewPager.setCurrentItem(next , true);
+                handler.postDelayed(this, PERIOD_TIME);
+            }
+        };
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
+
 
 
         return view;
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        handler.postDelayed(runnable, DELAY_TIME);
+    }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable);
+    }
 }
