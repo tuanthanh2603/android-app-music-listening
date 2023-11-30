@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.soundify.Adapter.Discover.BaiHatAdapter;
 import com.soundify.Model.Discover.BaiHat;
 import com.soundify.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 
 public class TheLoaiActivity extends AppCompatActivity {
     private ImageButton imageButton;
+    private ImageView imageView;
     private RecyclerView recyclerView;
     private ArrayList<BaiHat> listBaiHat = new ArrayList<>();
     private String base_url = "https://musicapp29263.000webhostapp.com/Server/getsongbygenre.php";
@@ -80,6 +83,10 @@ public class TheLoaiActivity extends AppCompatActivity {
                 }
                 baiHatAdapter = new BaiHatAdapter(TheLoaiActivity.this, listBaiHat);
                 recyclerView.setAdapter(baiHatAdapter);
+                if(!listBaiHat.isEmpty()){
+                    String imageUrl = listBaiHat.get(0).getHinhTheLoai();
+                    Picasso.get().load(imageUrl).into(imageView);
+                }
 
             }
         }, new Response.ErrorListener() {
@@ -94,6 +101,7 @@ public class TheLoaiActivity extends AppCompatActivity {
 
         imageButton = (ImageButton) findViewById(R.id.back);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewBaiHat);
+        imageView = (ImageView) findViewById(R.id.hinhTheLoai2);
     }
     private void addEvent(){
         imageButton.setOnClickListener(new View.OnClickListener() {
