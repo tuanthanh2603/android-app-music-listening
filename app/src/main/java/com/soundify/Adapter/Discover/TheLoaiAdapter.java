@@ -1,4 +1,4 @@
-package com.soundify.Adapter;
+package com.soundify.Adapter.Discover;
 
 
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.soundify.Model.TheLoai;
+import com.soundify.Model.Discover.TheLoai;
 import com.soundify.R;
 import com.squareup.picasso.Picasso;
 

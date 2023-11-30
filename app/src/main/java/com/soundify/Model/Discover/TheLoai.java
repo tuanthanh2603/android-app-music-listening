@@ -1,4 +1,4 @@
-package com.soundify.Model;
+package com.soundify.Model.Discover;
 
 public class TheLoai {
     private String idTheLoai, idChuDe, tenTheLoai, hinhTheLoai ;

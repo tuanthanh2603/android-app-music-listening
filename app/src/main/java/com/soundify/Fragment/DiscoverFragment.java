@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +18,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.soundify.Adapter.TheLoaiAdapter;
-import com.soundify.Model.TheLoai;
+import com.soundify.Adapter.Discover.DangChuYAdapter;
+import com.soundify.Adapter.Discover.TheLoaiAdapter;
+import com.soundify.Model.Discover.DangChuY;
+import com.soundify.Model.Discover.TheLoai;
 import com.soundify.R;
 
 import org.json.JSONArray;
@@ -35,10 +38,14 @@ import java.util.ArrayList;
 public class DiscoverFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private ViewPager viewPager;
     private ArrayList<TheLoai> listTheLoai = new ArrayList<>();
-    private TheLoaiAdapter adapter;
 
-    private String base_url_theloai = "https://musicapp29263.000webhostapp.com/Server/gettheloai.php";
+    private ArrayList<DangChuY> listDangChuY = new ArrayList<>();
+
+
+    private String url_theloai = "https://musicapp29263.000webhostapp.com/Server/gettheloai.php";
+    private String url_dangchuy = "https://musicapp29263.000webhostapp.com/Server/dangchuy.php";
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,8 +90,8 @@ public class DiscoverFragment extends Fragment {
         }
 
 
-        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
-        StringRequest request = new StringRequest(Request.Method.GET, base_url_theloai, new Response.Listener<String>() {
+        RequestQueue requestQueueTheLoai = Volley.newRequestQueue(requireContext());
+        StringRequest requestTheLoai = new StringRequest(Request.Method.GET, url_theloai, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 //                Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
@@ -92,19 +99,16 @@ public class DiscoverFragment extends Fragment {
                     JSONArray jsonArray = new JSONArray(response);
                     for(int i = 0; i < jsonArray.length(); i++){
                         JSONObject theloaiJson = jsonArray.getJSONObject(i);
-
                         String idTheLoai = theloaiJson.getString("IdTheLoai");
                         String idChuDe = theloaiJson.getString("IdChuDe");
                         String tenTheLoai = theloaiJson.getString("TenTheLoai");
                         String hinhTheLoai = theloaiJson.getString("HinhTheLoai");
                         TheLoai tl = new TheLoai(idTheLoai,idChuDe, tenTheLoai, hinhTheLoai);
                         listTheLoai.add(tl);
-
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
-
                 TheLoaiAdapter adapter = new TheLoaiAdapter(requireContext(), listTheLoai);
                 recyclerView.setAdapter(adapter);
             }
@@ -114,7 +118,38 @@ public class DiscoverFragment extends Fragment {
                 Toast.makeText(getContext(), "Lỗi lấy dữ liệu", Toast.LENGTH_LONG).show();
             }
         });
-        requestQueue.add(request);
+        requestQueueTheLoai.add(requestTheLoai);
+
+        RequestQueue requestQueueDangChuY = Volley.newRequestQueue(requireContext());
+        StringRequest requestDangChuY = new StringRequest(Request.Method.GET, url_dangchuy, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i = 0; i < jsonArray.length(); i++){
+                        JSONObject dangchuyJson = jsonArray.getJSONObject(i);
+                        String idQuangCao = dangchuyJson.getString("IdQuangCao");
+                        String hinhQuangCao = dangchuyJson.getString("HinhQuangCao");
+                        String noiDung = dangchuyJson.getString("NoiDung");
+                        String idBaiHat = dangchuyJson.getString("IdBaiHat");
+                        String tenBaiHat = dangchuyJson.getString("TenBaiHat");
+                        String hinhBaiHat = dangchuyJson.getString("HinhBaiHat");
+                        DangChuY dcy = new DangChuY(idQuangCao, hinhQuangCao, noiDung, idBaiHat, tenBaiHat, hinhBaiHat);
+                        listDangChuY.add(dcy);
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                DangChuYAdapter dangChuYAdapter1 = new DangChuYAdapter(requireContext(), listDangChuY);
+                viewPager.setAdapter(dangChuYAdapter1);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Lỗi lấy dữ liệu", Toast.LENGTH_LONG).show();
+            }
+        });
+        requestQueueDangChuY.add(requestDangChuY);
     }
 
     @Override
@@ -123,6 +158,8 @@ public class DiscoverFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_discover, container, false);
 //        gridView = view.findViewById(R.id.gridViewTheLoai);
         recyclerView = view.findViewById(R.id.recyclerView);
+        viewPager = view.findViewById(R.id.viewPager);
+
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
 

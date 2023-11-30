@@ -1,4 +1,4 @@
-package com.soundify.Model;
+package com.soundify.Model.Discover;
 
 public class ChuDe {
     private String idChuDe, tenChuDe;
