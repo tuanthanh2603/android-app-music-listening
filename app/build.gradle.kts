@@ -47,8 +47,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.8.1")
 
-    implementation("me.relex:circleindicator:2.1.6")
-    implementation("javax.annotation:javax.annotation-api:1.3.2")
+
 
 
 

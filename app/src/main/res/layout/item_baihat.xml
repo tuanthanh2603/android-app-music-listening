@@ -6,7 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp">
 
         <ImageView
             android:id="@+id/hinhBaiHat"
@@ -30,14 +31,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="18dp"
+                android:textSize="17dp"
                 android:text="Tên bài hát" />
 
             <TextView
                 android:id="@+id/tenCaSi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ca sĩ" />
+                android:text="Ca sĩ"
+                android:textSize="13dp"/>
+
+            <TextView
+                android:id="@+id/idBaiHat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
 
         </LinearLayout>
 
