@@ -4,12 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.soundify.Model.Discover.BaiHat;
 import com.soundify.R;
 import com.squareup.picasso.Picasso;
@@ -50,6 +55,7 @@ public class BaiHatAdapter extends RecyclerView.Adapter<BaiHatAdapter.ViewHolder
         TextView tenBaiHat;
         TextView tenCaSi;
         ImageView hinhBaiHat;
+        ImageButton imageButton;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -58,6 +64,57 @@ public class BaiHatAdapter extends RecyclerView.Adapter<BaiHatAdapter.ViewHolder
             tenBaiHat = itemView.findViewById(R.id.tenBaiHat);
             hinhBaiHat = itemView.findViewById(R.id.hinhBaiHat);
             tenCaSi = itemView.findViewById(R.id.tenCaSi);
+            imageButton = itemView.findViewById(R.id.imageButton2);
+
+            imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        BaiHat baiHat = listBaiHat.get(position);
+                        String itemId = baiHat.getIdBaiHat();
+//                        Toast.makeText(itemView.getContext(), "ID: " + itemId, Toast.LENGTH_SHORT).show();
+
+                        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(itemView.getContext());
+                        bottomSheetDialog.setContentView(R.layout.bottom_sheet_layout);
+
+                        LinearLayout option1 = bottomSheetDialog.findViewById(R.id.option1);
+                        LinearLayout option2 = bottomSheetDialog.findViewById(R.id.option2);
+                        LinearLayout option3 = bottomSheetDialog.findViewById(R.id.option3);
+                        TextView tenBaiHat = bottomSheetDialog.findViewById(R.id.tenBaiHat2);
+                        TextView tenCaSi = bottomSheetDialog.findViewById(R.id.tenCaSi2);
+                        ImageView hinhBaiHat = bottomSheetDialog.findViewById(R.id.hinhBaiHat2);
+
+                        tenBaiHat.setText(baiHat.getTenBaiHat());
+                        tenCaSi.setText(baiHat.getCaSi());
+                        Picasso.get().load(baiHat.getHinhBaiHat()).into(hinhBaiHat);
+
+                        option1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(itemView.getContext(), "Đã thêm bài hát này vào thư viện", Toast.LENGTH_SHORT).show();
+                                bottomSheetDialog.dismiss();
+                            }
+                        });
+                        option2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                bottomSheetDialog.dismiss();
+                            }
+                        });
+                        option3.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                bottomSheetDialog.dismiss();
+                            }
+                        });
+
+
+                        bottomSheetDialog.show();
+                    }
+                }
+            });
+
         }
     }
 }

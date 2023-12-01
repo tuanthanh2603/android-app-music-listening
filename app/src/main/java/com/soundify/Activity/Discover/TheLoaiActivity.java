@@ -44,7 +44,7 @@ public class TheLoaiActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null){
             String idTheLoai = intent.getStringExtra("ID_THELOAI");
-            Toast.makeText(this, "ID: " + idTheLoai, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "ID: " + idTheLoai, Toast.LENGTH_SHORT).show();
         }
 
         addControl();
@@ -102,6 +102,7 @@ public class TheLoaiActivity extends AppCompatActivity {
         imageButton = (ImageButton) findViewById(R.id.back);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewBaiHat);
         imageView = (ImageView) findViewById(R.id.hinhTheLoai2);
+
     }
     private void addEvent(){
         imageButton.setOnClickListener(new View.OnClickListener() {
