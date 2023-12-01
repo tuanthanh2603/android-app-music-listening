@@ -32,10 +32,9 @@ import com.soundify.R;
  */
 public class UserFragment extends Fragment {
     private static final int RC_SIGN_IN = 9001;
-    private GoogleSignInOptions googleSignInOptions;
-    private GoogleSignInClient googleSignInClient;
+
     Button loginButton;
-    private ActivityResultLauncher<Intent> signInLauncher;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,8 +82,7 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
-        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        googleSignInClient = GoogleSignIn.getClient(requireContext(), googleSignInOptions);
+
         loginButton = view.findViewById(R.id.loginButton);
 
         // Inflate the layout for this fragment
