@@ -27,6 +27,7 @@ import com.soundify.R;
 
 
 
+
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     FrameLayout frameLayout;
