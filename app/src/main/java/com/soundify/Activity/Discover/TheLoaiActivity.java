@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.soundify.Activity.PlayMusicActivity;
 import com.soundify.Adapter.Discover.BaiHatAdapter;
 import com.soundify.Model.Discover.BaiHat;
 import com.soundify.R;
@@ -36,6 +38,7 @@ public class TheLoaiActivity extends AppCompatActivity {
     private ArrayList<BaiHat> listBaiHat = new ArrayList<>();
     private String base_url = "https://musicapp29263.000webhostapp.com/Server/getsongbygenre.php";
     private BaiHatAdapter baiHatAdapter;
+    private Button btnPhatTatCa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +53,9 @@ public class TheLoaiActivity extends AppCompatActivity {
         addControl();
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
-        addEvent();
+
         fetchDataFromUrl();
+        addEvent();
     }
 
     private void fetchDataFromUrl(){
@@ -102,6 +106,7 @@ public class TheLoaiActivity extends AppCompatActivity {
         imageButton = (ImageButton) findViewById(R.id.back);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewBaiHat);
         imageView = (ImageView) findViewById(R.id.hinhTheLoai2);
+        btnPhatTatCa = findViewById(R.id.btnPhatTatCa);
 
     }
     private void addEvent(){
@@ -109,6 +114,14 @@ public class TheLoaiActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        btnPhatTatCa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TheLoaiActivity.this, PlayMusicActivity.class);
+                intent.putExtra("cacbaihat", listBaiHat);
+                startActivity(intent);
             }
         });
     }
