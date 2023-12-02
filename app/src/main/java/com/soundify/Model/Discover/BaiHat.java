@@ -6,15 +6,16 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class BaiHat implements Parcelable {
-    private String IdBaiHat, TenBaiHat, HinhBaiHat, CaSi, IdTheLoai, HinhTheLoai;
+    private String IdBaiHat, TenBaiHat, HinhBaiHat, CaSi, IdTheLoai, HinhTheLoai, LinkNhac;
 
-    public BaiHat(String idBaiHat, String tenBaiHat, String hinhBaiHat, String caSi, String idTheLoai, String hinhTheLoai) {
+    public BaiHat(String idBaiHat, String tenBaiHat, String hinhBaiHat, String caSi, String idTheLoai, String hinhTheLoai, String linkNhac) {
         IdBaiHat = idBaiHat;
         TenBaiHat = tenBaiHat;
         HinhBaiHat = hinhBaiHat;
         CaSi = caSi;
         IdTheLoai = idTheLoai;
         HinhTheLoai = hinhTheLoai;
+        LinkNhac = linkNhac;
     }
     public BaiHat(){
 
@@ -28,6 +29,7 @@ public class BaiHat implements Parcelable {
         CaSi = in.readString();
         IdTheLoai = in.readString();
         HinhTheLoai = in.readString();
+        LinkNhac = in.readString();
     }
 
     public static final Creator<BaiHat> CREATOR = new Creator<BaiHat>() {
@@ -41,6 +43,14 @@ public class BaiHat implements Parcelable {
             return new BaiHat[size];
         }
     };
+
+    public String getLinkNhac() {
+        return LinkNhac;
+    }
+
+    public void setLinkNhac(String linkNhac) {
+        LinkNhac = linkNhac;
+    }
 
     public String getIdBaiHat() {
         return IdBaiHat;
@@ -103,5 +113,6 @@ public class BaiHat implements Parcelable {
         parcel.writeString(CaSi);
         parcel.writeString(IdTheLoai);
         parcel.writeString(HinhTheLoai);
+        parcel.writeString(LinkNhac);
     }
 }

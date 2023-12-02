@@ -75,8 +75,9 @@ public class TheLoaiActivity extends AppCompatActivity {
                         String hinhBaiHat = baihatJson.getString("HinhBaiHat");
                         String idTheLoai = baihatJson.getString("IdTheLoai");
                         String hinhTheLoai = baihatJson.getString("HinhTheLoai");
+                        String linkNhac = baihatJson.getString("LinkNhac");
                         if(idTheLoai.equals(finalIdTheLoai)){
-                            BaiHat bh = new BaiHat(idBaiHat, tenBaiHat, hinhBaiHat, tenCaSi, idTheLoai, hinhTheLoai);
+                            BaiHat bh = new BaiHat(idBaiHat, tenBaiHat, hinhBaiHat, tenCaSi, idTheLoai, hinhTheLoai, linkNhac);
                             listBaiHat.add(bh);
                         }
 

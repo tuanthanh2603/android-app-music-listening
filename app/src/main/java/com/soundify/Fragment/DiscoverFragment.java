@@ -140,6 +140,7 @@ public class DiscoverFragment extends Fragment {
                         String idBaiHat = dangchuyJson.getString("IdBaiHat");
                         String tenBaiHat = dangchuyJson.getString("TenBaiHat");
                         String hinhBaiHat = dangchuyJson.getString("HinhBaiHat");
+
                         DangChuY dcy = new DangChuY(idQuangCao, hinhQuangCao, noiDung, idBaiHat, tenBaiHat, hinhBaiHat);
                         listDangChuY.add(dcy);
                     }

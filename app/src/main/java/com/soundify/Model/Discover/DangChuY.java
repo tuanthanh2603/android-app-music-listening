@@ -10,10 +10,13 @@ public class DangChuY {
         IdBaiHat = idBaiHat;
         TenBaiHat = tenBaiHat;
         HinhBaiHat = hinhBaiHat;
+
     }
     public DangChuY(){
 
     }
+
+
 
     public String getIdQuangCao() {
         return IdQuangCao;
