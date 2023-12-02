@@ -1,6 +1,7 @@
 package com.soundify.Adapter.Discover;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.soundify.Activity.PlayMusicActivity;
 import com.soundify.Model.Discover.BaiHat;
 import com.soundify.R;
 import com.squareup.picasso.Picasso;
@@ -112,6 +114,14 @@ public class BaiHatAdapter extends RecyclerView.Adapter<BaiHatAdapter.ViewHolder
 
                         bottomSheetDialog.show();
                     }
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, PlayMusicActivity.class);
+                    intent.putExtra("baihat", listBaiHat.get(getPosition()));
+                    context.startActivity(intent);
                 }
             });
 

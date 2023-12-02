@@ -1,6 +1,11 @@
 package com.soundify.Model.Discover;
 
-public class BaiHat {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class BaiHat implements Parcelable {
     private String IdBaiHat, TenBaiHat, HinhBaiHat, CaSi, IdTheLoai, HinhTheLoai;
 
     public BaiHat(String idBaiHat, String tenBaiHat, String hinhBaiHat, String caSi, String idTheLoai, String hinhTheLoai) {
@@ -16,6 +21,26 @@ public class BaiHat {
     }
 
 
+    protected BaiHat(Parcel in) {
+        IdBaiHat = in.readString();
+        TenBaiHat = in.readString();
+        HinhBaiHat = in.readString();
+        CaSi = in.readString();
+        IdTheLoai = in.readString();
+        HinhTheLoai = in.readString();
+    }
+
+    public static final Creator<BaiHat> CREATOR = new Creator<BaiHat>() {
+        @Override
+        public BaiHat createFromParcel(Parcel in) {
+            return new BaiHat(in);
+        }
+
+        @Override
+        public BaiHat[] newArray(int size) {
+            return new BaiHat[size];
+        }
+    };
 
     public String getIdBaiHat() {
         return IdBaiHat;
@@ -63,5 +88,20 @@ public class BaiHat {
 
     public void setHinhTheLoai(String hinhTheLoai) {
         HinhTheLoai = hinhTheLoai;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeString(IdBaiHat);
+        parcel.writeString(TenBaiHat);
+        parcel.writeString(HinhBaiHat);
+        parcel.writeString(CaSi);
+        parcel.writeString(IdTheLoai);
+        parcel.writeString(HinhTheLoai);
     }
 }
