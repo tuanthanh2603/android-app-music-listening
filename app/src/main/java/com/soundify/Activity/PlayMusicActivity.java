@@ -89,7 +89,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                 if(repeat == false){
                     if(checkrandom == true){
                         checkrandom = false;
-//                        btnPhatLai.setImageResource();
+//                        btnPhatLai.setImageResource()
                     }
                     repeat = true;
 
