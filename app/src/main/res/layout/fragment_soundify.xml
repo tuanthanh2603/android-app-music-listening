@@ -14,10 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="557dp"
         android:orientation="vertical">
+
         <ListView
             android:id="@+id/lvArtist"
             android:layout_width="match_parent"
-            android:layout_height="635dp" />
+            android:layout_height="464dp" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ZingChart#" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewChartWeek"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </FrameLayout>
