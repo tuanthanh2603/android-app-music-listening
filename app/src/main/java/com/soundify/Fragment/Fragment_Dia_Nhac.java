@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.soundify.R;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -30,6 +31,10 @@ public class Fragment_Dia_Nhac extends Fragment {
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
         objectAnimator.setRepeatMode(ValueAnimator.RESTART);
         objectAnimator.setInterpolator(new LinearInterpolator());
+        objectAnimator.start();
         return view;
+    }
+    public void PlayMusic(String hinhanh){
+        Picasso.get().load(hinhanh).into(circleImageView);
     }
 }
