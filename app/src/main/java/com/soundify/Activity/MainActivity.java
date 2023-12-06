@@ -49,39 +49,7 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new LibraryFragment());
 
     }
-//    private void authenticateSpotify(){
-//        AuthorizationRequest.Builder builder = new AuthorizationRequest.Builder(CLIENT_ID, AuthorizationResponse.Type.TOKEN, REDIRECT_URI);
-//        builder.setScopes(new String[]{"streaming"});
-//        AuthorizationRequest request = builder.build();
-//
-//        AuthorizationClient.openLoginActivity(this, REQUEST_CODE, request);
-//    }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if( requestCode == REQUEST_CODE) {
-//            AuthorizationResponse response = AuthorizationClient.getResponse(resultCode, data);
-//            if(response.getType() == AuthorizationResponse.Type.TOKEN){
-//                Toast.makeText(this, "Authentication successful", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//    }
-//    private void connected(){
-//
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//    }
 
     private void addControl(){
 

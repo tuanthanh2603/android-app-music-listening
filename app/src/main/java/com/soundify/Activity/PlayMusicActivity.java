@@ -76,10 +76,10 @@ public class PlayMusicActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(mediaPlayer.isPlaying()){
                     mediaPlayer.pause();
-                    btnPlay.setImageResource(R.drawable.baseline_play_circle_outline_24);
+                    btnPlay.setImageResource(R.drawable.icon_play);
                 } else {
                     mediaPlayer.start();
-                    btnPlay.setImageResource(R.drawable.iconpause);
+                    btnPlay.setImageResource(R.drawable.icon_pause);
                 }
             }
         });
@@ -89,12 +89,14 @@ public class PlayMusicActivity extends AppCompatActivity {
                 if(repeat == false){
                     if(checkrandom == true){
                         checkrandom = false;
-//                        btnPhatLai.setImageResource()
+                        btnPhatLai.setImageResource(R.drawable.icon_replay);
+                        btnNgauNhien.setImageResource(R.drawable.icon_all_inclusive);
                     }
+                    btnPhatLai.setImageResource(R.drawable.icon_replay);
                     repeat = true;
 
                 } else {
-                    btnPhatLai.setImageResource(R.drawable.baseline_refresh_24);
+                    btnPhatLai.setImageResource(R.drawable.icon_refresh);
                     repeat = false;
                 }
             }
@@ -102,7 +104,19 @@ public class PlayMusicActivity extends AppCompatActivity {
         btnNgauNhien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(checkrandom == false){
+                    if(repeat == true){
+                        repeat = false;
+                        btnNgauNhien.setImageResource(R.drawable.icon_sync_alt);
+                        btnPhatLai.setImageResource(R.drawable.icon_refresh);
+                    }
+                    btnNgauNhien.setImageResource(R.drawable.icon_sync_alt);
+                    checkrandom = true;
 
+                } else {
+                    btnNgauNhien.setImageResource(R.drawable.icon_all_inclusive);
+                    checkrandom = false;
+                }
             }
         });
         seekBarTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -131,7 +145,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                         mediaPlayer = null;
                     }
                     if(position < (mangbaihat.size())){
-                        btnPlay.setImageResource(R.drawable.iconpause);
+                        btnPlay.setImageResource(R.drawable.icon_pause);
                         position++;
                         if(repeat == true){
                             if(position == 0){
@@ -178,7 +192,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                         mediaPlayer = null;
                     }
                     if(position < (mangbaihat.size())){
-                        btnPlay.setImageResource(R.drawable.iconpause);
+                        btnPlay.setImageResource(R.drawable.icon_pause);
                         position--;
                         if(position < 0){
                             position = mangbaihat.size() - 1;
@@ -258,7 +272,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                 mangbaihat.clear();
             }
         });
-        toolbarPlayMusic.setTitleTextColor(Color.BLUE);
+        toolbarPlayMusic.setTitleTextColor(Color.WHITE);
         fragmentDiaNhac = new Fragment_Dia_Nhac();
         fragmentPlayListMusic = new Fragment_Play_List_Music();
         adapternhac = new PlayListMusicAdapter(getSupportFragmentManager());
@@ -272,7 +286,7 @@ public class PlayMusicActivity extends AppCompatActivity {
         if (mangbaihat.size() > 0) {
             getSupportActionBar().setTitle(mangbaihat.get(0).getTenBaiHat());
             new PlayMp3().execute(mangbaihat.get(0).getLinkNhac());
-            btnPlay.setImageResource(R.drawable.iconpause);
+            btnPlay.setImageResource(R.drawable.icon_pause);
         }
     }
     class PlayMp3 extends AsyncTask<String, Void, String>{
@@ -349,7 +363,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                             mediaPlayer = null;
                         }
                         if(position < (mangbaihat.size())){
-                            btnPlay.setImageResource(R.drawable.iconpause);
+                            btnPlay.setImageResource(R.drawable.icon_pause);
                             position++;
                             if(repeat == true){
                                 if(position == 0){

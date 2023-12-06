@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Activity.PlayMusicActivity"
     android:orientation="vertical"
-    android:weightSum="10">
+    android:weightSum="10"
+    android:background="@drawable/bg1">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarPlayMusic"
         android:layout_width="match_parent"
@@ -38,18 +39,19 @@
                 android:gravity="center"
                 android:layout_weight="0.5"
                 android:id="@+id/tvTimeSong"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <SeekBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="9"
+
                 android:id="@+id/seekbarSong"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:id="@+id/tvTotalTimeSong"
                 android:layout_weight="0.5"
                 android:gravity="center"
@@ -71,7 +73,7 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/imageButtonNgauNhien"
-                android:src="@drawable/baseline_all_inclusive_24"
+                android:src="@drawable/icon_all_inclusive"
                 android:scaleType="fitXY"/>
             <ImageButton
                 android:background="@android:color/transparent"
@@ -79,12 +81,12 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/imageButtonTruoc"
-                android:src="@drawable/baseline_skip_previous_24"
+                android:src="@drawable/icon_skip_previous"
                 android:scaleType="fitXY"/>
             <ImageButton
                 android:background="@android:color/transparent"
                 android:layout_width="70dp"
-                android:src="@drawable/baseline_play_circle_outline_24"
+                android:src="@drawable/icon_play"
                 android:layout_height="70dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/imageButtonPlay"
@@ -92,7 +94,7 @@
             <ImageButton
                 android:background="@android:color/transparent"
                 android:layout_width="50dp"
-                android:src="@drawable/baseline_skip_next_24"
+                android:src="@drawable/icon_skip"
                 android:layout_height="50dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/imageButtonSau"
@@ -100,7 +102,7 @@
             <ImageButton
                 android:background="@android:color/transparent"
                 android:layout_width="50dp"
-                android:src="@drawable/baseline_refresh_24"
+                android:src="@drawable/icon_refresh"
                 android:layout_height="50dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/imageButtonPhatLai"
