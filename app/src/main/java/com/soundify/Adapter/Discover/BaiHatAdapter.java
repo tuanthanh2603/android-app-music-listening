@@ -14,15 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.soundify.Activity.PlayMusicActivity;
 import com.soundify.Model.Discover.BaiHat;
@@ -30,8 +25,17 @@ import com.soundify.R;
 import com.squareup.picasso.Picasso;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class BaiHatAdapter extends RecyclerView.Adapter<BaiHatAdapter.ViewHolder> {
@@ -105,9 +109,8 @@ public class BaiHatAdapter extends RecyclerView.Adapter<BaiHatAdapter.ViewHolder
                         option1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Toast.makeText(itemView.getContext(), itemId, Toast.LENGTH_SHORT).show();
 
-
+                                bottomSheetDialog.dismiss();
                             }
                         });
                         option2.setOnClickListener(new View.OnClickListener() {
