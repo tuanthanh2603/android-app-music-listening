@@ -1,5 +1,7 @@
 package com.soundify.Fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.soundify.Activity.Library.YeuThichActivity;
 import com.soundify.R;
 
 /**
@@ -16,6 +20,7 @@ import com.soundify.R;
  * create an instance of this fragment.
  */
 public class LibraryFragment extends Fragment {
+    LinearLayout thuvienyeuthich;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,10 +62,25 @@ public class LibraryFragment extends Fragment {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_library, container, false);
+        thuvienyeuthich = view.findViewById(R.id.thuvienyeuthich);
+        addEvent();
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_library, container, false);
+        return view;
     }
+    private void addEvent(){
+        thuvienyeuthich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), YeuThichActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 }
