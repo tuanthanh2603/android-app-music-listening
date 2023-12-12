@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.soundify.Adapter.ImagePagerAdapter;
 import com.soundify.R;
 
 import org.json.JSONException;
@@ -41,6 +44,13 @@ public class RadioFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ViewPager viewPager;
+    private ImagePagerAdapter adapter;
+    private Handler handler;
+    private Runnable runnable;
+    private int delay = 3000; // Delay in milliseconds between slides
+    private int page = 0;
 
     public RadioFragment() {
         // Required empty public constructor
@@ -77,7 +87,32 @@ public class RadioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_radio, container, false);
+        View view = inflater.inflate(R.layout.fragment_radio, container, false);
+
+        // Initialize ViewPager and set adapter
+        viewPager = view.findViewById(R.id.viewPager);
+        int[] images = {R.drawable.radio_icon, R.drawable.rating_icon, R.drawable.love_icon}; // Replace with your image resources
+        adapter = new ImagePagerAdapter(requireContext(), images);
+
+        // Corrected line: set adapter on the ViewPager, not the View
+        viewPager.setAdapter(adapter);
+
+        handler = new Handler();
+        runnable = () -> {
+            if (adapter.getCount() == page) {
+                page = 0;
+            } else {
+                page++;
+            }
+            viewPager.setCurrentItem(page, true);
+            handler.postDelayed(runnable, delay);
+        };
+
+        handler.postDelayed(runnable, delay);
+
+        // Other code for your fragment can be added here
+
+        return view;
     }
+
 }
