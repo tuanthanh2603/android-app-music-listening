@@ -73,7 +73,7 @@ public class RadioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_radio, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerView);
-        int[] images = {R.drawable.rating_icon, R.drawable.radio_icon, R.drawable.love_icon, R.drawable.music_library_icon, R.drawable.user_icon, R.drawable.theloai}; // Thay thế bằng tài nguyên hình ảnh thực tế
+        int[] images = {R.drawable.radio1, R.drawable.radio2, R.drawable.radio3, R.drawable.radio4, R.drawable.radio5, R.drawable.radio6}; // Thay thế bằng tài nguyên hình ảnh thực tế
         adapter = new DualImageAdapter(requireContext(), images);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
