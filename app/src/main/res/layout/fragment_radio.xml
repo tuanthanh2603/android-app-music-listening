@@ -16,12 +16,23 @@
             android:id="@+id/imageView6"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/chudedulich" />
+            android:src="@drawable/radio_banner" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
+        <TextView
+            android:id="@+id/moodTextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tâm Trạng và Hoạt Động"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </FrameLayout>

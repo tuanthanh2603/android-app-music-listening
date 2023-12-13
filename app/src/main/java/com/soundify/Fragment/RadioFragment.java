@@ -2,31 +2,17 @@ package com.soundify.Fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.soundify.Adapter.ImagePagerAdapter;
+import com.soundify.Adapter.DualImageAdapter;
 import com.soundify.R;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,13 +30,10 @@ public class RadioFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private ViewPager viewPager;
-    private ImagePagerAdapter adapter;
-    private Handler handler;
-    private Runnable runnable;
-    private int delay = 3000; // Delay in milliseconds between slides
     private int page = 0;
+
+    private RecyclerView recyclerView;
+    private DualImageAdapter adapter;
 
     public RadioFragment() {
         // Required empty public constructor
@@ -89,28 +72,14 @@ public class RadioFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_radio, container, false);
 
-        // Initialize ViewPager and set adapter
-        viewPager = view.findViewById(R.id.viewPager);
-        int[] images = {R.drawable.radio_icon, R.drawable.rating_icon, R.drawable.love_icon}; // Replace with your image resources
-        adapter = new ImagePagerAdapter(requireContext(), images);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        int[] images = {R.drawable.rating_icon, R.drawable.radio_icon, R.drawable.love_icon, R.drawable.music_library_icon, R.drawable.user_icon, R.drawable.theloai}; // Thay thế bằng tài nguyên hình ảnh thực tế
+        adapter = new DualImageAdapter(requireContext(), images);
 
-        // Corrected line: set adapter on the ViewPager, not the View
-        viewPager.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setAdapter(adapter);
 
-        handler = new Handler();
-        runnable = () -> {
-            if (adapter.getCount() == page) {
-                page = 0;
-            } else {
-                page++;
-            }
-            viewPager.setCurrentItem(page, true);
-            handler.postDelayed(runnable, delay);
-        };
-
-        handler.postDelayed(runnable, delay);
-
-        // Other code for your fragment can be added here
+        // Bổ sung code khác cho fragment radio nếu cần
 
         return view;
     }
