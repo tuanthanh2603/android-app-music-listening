@@ -1,23 +1,23 @@
 package com.soundify.Fragment;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
-
+import com.soundify.Adapter.CardUserAdapter;
+import com.soundify.CardItem;
 import com.soundify.R;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,9 +28,6 @@ import com.soundify.R;
 public class UserFragment extends Fragment {
     private static final int RC_SIGN_IN = 9001;
 
-    Button loginButton;
-
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,6 +37,10 @@ public class UserFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private RecyclerView recyclerView;
+    private List<CardItem> cardItemList;
+    private CardUserAdapter cardAdapter;
 
     public UserFragment() {
         // Required empty public constructor
@@ -71,6 +72,13 @@ public class UserFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        // Tạo danh sách CardItem
+        cardItemList = new ArrayList<>();
+        cardItemList.add(new CardItem("SOUND VIP", "19,000đ", "Nghe với chất lượng cao nhất, không quảng cáo", "Nghe nhạc không quảng cáo", "Nghe và tải nhạc lossless", "Lưu trữ nhạc không giới hạn", R.drawable.rating_icon, R.drawable.rating_icon, R.drawable.rating_icon, Color.parseColor("#F0E8FD")));
+        cardItemList.add(new CardItem("SOUND PREMIUM", "49,000đ", "Toàn bộ đặc quyền VIP cùng kho nhạc Premium", "Kho nhạc Premium", "Nghe nhạc không quảng cáo", "Nghe và tải nhạc lossless", R.drawable.rating_icon, R.drawable.rating_icon, R.drawable.rating_icon, Color.parseColor("#FCF5E3")));
+
+        // Tạo Adapter và gắn vào RecyclerView
+        cardAdapter = new CardUserAdapter(cardItemList);
     }
 
     @Override
@@ -78,10 +86,17 @@ public class UserFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
 
-        loginButton = view.findViewById(R.id.loginButton);
+        recyclerView = view.findViewById(R.id.cardRecycle);
 
-        // Inflate the layout for this fragment
+        // Thiết lập layout cho RecyclerView (ví dụ: LinearLayoutManager)
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Gắn Adapter vào RecyclerView
+        recyclerView.setAdapter(cardAdapter);
+
         return view;
+
     }
 
 }
