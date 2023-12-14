@@ -1,5 +1,6 @@
 package com.soundify.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,9 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,12 +20,15 @@ import com.android.volley.toolbox.Volley;
 import com.soundify.Artist;
 import com.soundify.CustomAdapterArtist;
 import com.soundify.R;
+import com.soundify.baihatdacho;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +38,10 @@ import java.util.ArrayList;
 public class SoundifyFragment extends Fragment {
 
     ListView lvArtist;
+
     ArrayList<Artist> lsArtist = new ArrayList<>();
+
+
     String url = "https://soundiiz.com/data/fileExamples/playlistExport.json";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -82,21 +88,32 @@ public class SoundifyFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 System.out.println(response);
+                CustomAdapterArtist adapter = new CustomAdapterArtist(requireContext(), R.layout.layout_items_artist, lsArtist);
                 try {
                     JSONArray jsonArray = new JSONArray(response);
+                    List<JSONObject> jsonList = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject artistJson = jsonArray.getJSONObject(i);
+                        jsonList.add(jsonArray.getJSONObject(i));
+                    }
+                    Collections.shuffle(jsonList);
+
+                    int count = Math.min(jsonList.size(), 10);
+                    for (int i = 0; i < count; i++) {
+                        JSONObject artistJson = jsonList.get(i);
+                        String id = artistJson.getString("id");
                         String title = artistJson.getString("title");
                         String artist = artistJson.getString("artist");
                         String picture = artistJson.getString("picture");
-                        Artist Album = new Artist( title,  artist,  picture);
+                        String linknhac = artistJson.getString("preview");
+                        String position = artistJson.getString("position");
+                        int sequentialNumber = i + 1;
+                        Artist Album = new Artist(id, title, artist, picture, linknhac, position);
+                        Album.setSequentialNumber(sequentialNumber);
                         lsArtist.add(Album);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                CustomAdapterArtist adapter = new CustomAdapterArtist(requireContext(), R.layout.layout_items_artist, lsArtist);
                 lvArtist.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {
@@ -113,14 +130,28 @@ public class SoundifyFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_soundify, container, false);
 
-
         lvArtist = view.findViewById(R.id.lvArtist);
 
-        // Initialize your request queue
+        lvArtist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Artist selectedArtist = lsArtist.get(position);
+                String selectedId = selectedArtist.getId();
+                String selectedPosition = selectedArtist.getPosition();
+                String selectedLinkNhac = selectedArtist.getLinknhac();
 
-
-        // Rest of your code...
+                Intent intent = new Intent(requireContext(), baihatdacho.class);
+                intent.putExtra("selectedId", selectedId);
+                intent.putExtra("selectedPosition", selectedPosition);
+                intent.putExtra("selectedLinkNhac", selectedLinkNhac);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
+
+
+
+
 }

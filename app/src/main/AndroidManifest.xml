@@ -19,6 +19,12 @@
             android:name=".Activity.Library.YeuThichActivity"
             android:exported="false" />
         <activity
+            android:name=".baihatdacho"
+            android:exported="false" />
+        <activity
+            android:name=".baihatdachon"
+            android:exported="false" />
+        <activity
             android:name=".Activity.PlayMusicActivity"
             android:exported="false" />
         <activity

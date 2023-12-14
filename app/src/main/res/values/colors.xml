@@ -13,5 +13,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="back_color">#141414</color>
     <color name="fab_color">#20D761</color>
-
+    <color name="your_green_color">#00FF00</color>
+    <color name="your_original_color">#FFFFFF</color>
 </resources>

@@ -3,33 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.SoundifyFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
 
-
     <LinearLayout
-        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
-        android:layout_height="557dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg1"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="Soundify Ranking"
+            android:textAlignment="center"
+            android:textColor="#FFA500"
+            android:textSize="40dp"
+            android:textStyle="normal|italic" />
 
         <ListView
             android:id="@+id/lvArtist"
             android:layout_width="match_parent"
-            android:layout_height="464dp" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ZingChart#" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleViewChartWeek"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="535dp"
+            android:layout_marginTop="25dp" />
     </LinearLayout>
+
+
 
 </FrameLayout>
