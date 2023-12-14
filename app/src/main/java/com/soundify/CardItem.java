@@ -11,7 +11,6 @@ public class CardItem {
     private int icon1;
     private int icon2;
     private int icon3;
-
     private int cardBackgroundColor;
 
     public CardItem(String name, String price, String subscript, String subscription1,

@@ -74,8 +74,10 @@ public class UserFragment extends Fragment {
 
         // Tạo danh sách CardItem
         cardItemList = new ArrayList<>();
-        cardItemList.add(new CardItem("SOUND VIP", "19,000đ", "Nghe với chất lượng cao nhất, không quảng cáo", "Nghe nhạc không quảng cáo", "Nghe và tải nhạc lossless", "Lưu trữ nhạc không giới hạn", R.drawable.rating_icon, R.drawable.rating_icon, R.drawable.rating_icon, Color.parseColor("#F0E8FD")));
-        cardItemList.add(new CardItem("SOUND PREMIUM", "49,000đ", "Toàn bộ đặc quyền VIP cùng kho nhạc Premium", "Kho nhạc Premium", "Nghe nhạc không quảng cáo", "Nghe và tải nhạc lossless", R.drawable.rating_icon, R.drawable.rating_icon, R.drawable.rating_icon, Color.parseColor("#FCF5E3")));
+        cardItemList.add(new CardItem("SOUND VIP", "19,000đ", "Nghe với chất lượng cao nhất, không quảng cáo", "Nghe nhạc không quảng cáo", "Nghe và tải nhạc lossless", "Lưu trữ nhạc không giới hạn",
+                R.drawable.ad_block, R.drawable.sound_wave, R.drawable.download, Color.parseColor("#F0E8FD")));
+        cardItemList.add(new CardItem("SOUND PREMIUM", "49,000đ", "Toàn bộ đặc quyền VIP cùng kho nhạc Premium", "Kho nhạc Premium", "Nghe nhạc không quảng cáo", "Nghe và tải nhạc lossless",
+                R.drawable.premium, R.drawable.sound_wave_premium, R.drawable.download_premium, Color.parseColor("#FCF5E3")));
 
         // Tạo Adapter và gắn vào RecyclerView
         cardAdapter = new CardUserAdapter(cardItemList);
